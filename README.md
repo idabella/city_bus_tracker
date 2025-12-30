@@ -1,389 +1,180 @@
 <div align="center">
 
-# 🚌 Système de Gestion de Transport Public Marocain
 
-### Modern Public Transportation Management System
+# 🚌 Système de Gestion de Transport Public
 
-[![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)](https://www.oracle.com/)
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-
-*A comprehensive full-stack solution for managing public bus transportation in Morocco*
+[![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat&logo=oracle&logoColor=white)](https://www.oracle.com/)
+[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
 
 
+<img src="./images/logo.png" alt="Bus Transport Logo" width="300"/>
+
+
+*Full-stack public bus transportation management system for Morocco*
 
 </div>
 
 ---
 
-## 📋 Overview
+## 🎯 Overview
 
-The **Système de Gestion de Transport Public Marocain** is a modern, full-stack web application designed to streamline the management of public bus transportation services. Built with a robust Oracle database backend and a sleek React frontend, this system provides comprehensive tools for managing buses, drivers, routes, schedules, tickets, and more.
+Modern web application for managing public bus transportation: fleet, drivers, routes, schedules, tickets, and analytics. Built with React, TypeScript, Express, and Oracle Database.
 
-### 🎯 Key Objectives
-
-- **Centralized Management**: Single platform for all transportation operations
-- **Real-time Monitoring**: Track buses, trips, and incidents in real-time
-- **Role-based Access**: Secure access control for different user types
-- **Data-driven Decisions**: Comprehensive analytics and reporting
+**Key Features:** Fleet Management • Driver Scheduling • Route Planning • Ticketing System • Real-time Analytics
 
 ---
 
-## ✨ Features
+## 🚀 Quick Start
 
-<table>
-<tr>
-<td width="50%">
+### Prerequisites
+- Node.js 18+
+- Oracle Database 19c+
+- Oracle Instant Client
 
-### 🚍 Fleet Management
-- Bus registration and tracking
-- Vehicle maintenance scheduling
-- Status monitoring (Available, In Service, Maintenance)
-- Capacity management
+### Installation
 
-### 👨‍✈️ Driver Management
-- Driver profiles and licensing
-- License expiry tracking
-- Assignment to routes and trips
-- Performance monitoring
+```bash
+# Clone and install
+git clone https://github.com/idabella/city_bus_tracker.git
+cd city_bus_tracker/project
+npm install
 
-### 🛣️ Route Management
-- Bus line configuration
-- Station mapping
-- Stop order management
-- Distance calculations
+# Configure environment
+cp .env.example .env
+# Edit .env with your Oracle credentials
+```
 
-</td>
-<td width="50%">
+### Database Setup
 
-### 🎫 Ticketing System
-- Ticket generation and validation
-- Multiple ticket types (Standard, Student, Senior, Child)
-- Automatic pricing based on distance
-- Subscription management
+```bash
+# 1. As SYS/SYSDBA
+sqlplus sys/password@XE as sysdba
+@scripts/setup_infrastructure.sql
 
-### 📅 Scheduling
-- Trip scheduling and planning
-- Real-time schedule updates
-- Conflict detection
-- Service type management (Weekday, Weekend, Holiday)
+# 2. As BUS_ADMIN
+sqlplus bus_admin/Admin2025@XE
+@scripts/tables_objects.sql
+@scripts/Triggers.sql
+@scripts/Functions.sql
+@scripts/Procedures.sql
+@scripts/grant_privileges.sql
+```
 
-### 📊 Analytics & Reporting
-- Interactive dashboard
-- Revenue tracking
-- Utilization reports
-- Incident analysis
+### Run Application
 
-</td>
-</tr>
-</table>
+```bash
+# Option 1: Start both together
+npm run dev:all
 
----
+# Option 2: Start separately
+npm run server  # Backend API on port 3000
+npm run dev     # Frontend on port 5173
+```
 
-## 🛠️ Tech Stack
-
-### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **React 19** | UI Library |
-| **TypeScript** | Type Safety |
-| **Vite** | Build Tool |
-| **Tailwind CSS** | Styling |
-| **Framer Motion** | Animations |
-| **Recharts** | Data Visualization |
-| **Lucide React** | Icons |
-| **React Router** | Navigation |
-
-### Backend
-| Technology | Purpose |
-|------------|---------|
-| **Express 5** | API Server |
-| **Oracle Database** | Data Storage |
-| **oracledb** | Oracle Driver |
-| **TypeScript** | Type Safety |
-
-### Database
-| Component | Count |
-|-----------|-------|
-| **Tables** | 13 |
-| **Triggers** | 6 |
-| **Functions** | 14 |
-| **Procedures** | 50+ |
-| **Sequences** | 11 |
-| **Indexes** | 30+ |
+**Access:**
+- Frontend: http://localhost:5173
+- API: http://localhost:3000/api
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Systeme_de_Gestion_Transport_Public/
-├── 📂 project/                     # Main application
-│   ├── 📂 src/                     # Frontend source
-│   │   ├── 📂 components/          # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   ├── Modal.tsx
-│   │   │   ├── Sidebar.tsx
-│   │   │   ├── Table.tsx
-│   │   │   └── ...
-│   │   ├── 📂 pages/               # Application pages
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── Buses.tsx
-│   │   │   ├── Drivers.tsx
-│   │   │   ├── Trips.tsx
-│   │   │   ├── Tickets.tsx
-│   │   │   └── ...
-│   │   ├── 📂 context/             # React context providers
-│   │   ├── 📂 hooks/               # Custom React hooks
-│   │   ├── 📂 types/               # TypeScript definitions
-│   │   └── 📂 utils/               # Utility functions
-│   ├── 📂 oracle/                  # Database migrations
-│   ├── server.ts                   # Express API server
-│   ├── package.json
-│   └── vite.config.ts
-│
-├── 📂 scripts/                     # SQL scripts
-│   ├── setup_infrastructure.sql   # Tablespaces & users (run as SYS)
-│   ├── tables_objects.sql         # Tables & indexes (run as bus_admin)
-│   ├── Triggers.sql               # Database triggers
-│   ├── Functions.sql              # PL/SQL functions
-│   ├── Procedures.sql             # PL/SQL procedures
-│   ├── grant_privileges.sql       # Role permissions
-│   └── EXECUTION_ORDER.md         # Setup documentation
-│
-└── README.md
+project/
+├── src/                    # Frontend (React + TypeScript)
+│   ├── components/         # UI components
+│   ├── pages/             # App pages
+│   └── types/             # Type definitions
+├── scripts/               # Database SQL scripts
+└── server.ts              # Express API server
 ```
 
 ---
 
-## 🚀 Installation
+## 🔐 Default Users
 
-### Prerequisites
-
-- **Node.js** 18+ 
-- **npm** or **yarn**
-- **Oracle Database** 19c+ (XE, Standard, or Enterprise)
-- **Oracle Instant Client** (for Node.js oracledb driver)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/Systeme_de_Gestion_Transport_Public.git
-cd Systeme_de_Gestion_Transport_Public
-```
-
-### 2. Install Dependencies
-
-```bash
-cd project
-npm install
-```
-
-### 3. Configure Environment
-
-Create a `.env` file in the `project` directory:
-
-```env
-# Oracle Database Connection
-ORACLE_USER=bus_admin
-ORACLE_PASSWORD=Admin2025
-ORACLE_CONNECTION_STRING=localhost:1521/XE
-
-# Server Configuration
-PORT=3000
-```
-
----
-
-## 🗄️ Database Setup
-
-> ⚠️ **IMPORTANT**: Follow this exact order to avoid ORA-04089 errors!
-
-### Step 1: Run as SYS/SYSDBA
-
-Connect to Oracle as SYS and create the infrastructure:
-
-```bash
-sqlplus sys/your_password@XE as sysdba
-```
-
-```sql
-@scripts/setup_infrastructure.sql
-```
-
-This creates:
-- ✅ Tablespaces (`BUS_DATA`, `BUS_TEMP`)
-- ✅ Users (`bus_admin`, `bus_manager1`, `chauffeur1`, etc.)
-- ✅ Roles (`BUS_ADMIN_ROLE`, `BUS_MANAGER_ROLE`, etc.)
-
-### Step 2: Run as BUS_ADMIN
-
-Connect as the application user:
-
-```bash
-sqlplus bus_admin/Admin2025@XE
-```
-
-```sql
--- Create tables, sequences, indexes
-@scripts/tables_objects.sql
-
--- Create triggers
-@scripts/Triggers.sql
-
--- Create functions
-@scripts/Functions.sql
-
--- Create procedures
-@scripts/Procedures.sql
-
--- Grant privileges
-@scripts/grant_privileges.sql
-```
-
-### Step 3: Verify Installation
-
-```sql
-SELECT object_type, COUNT(*) 
-FROM user_objects 
-GROUP BY object_type 
-ORDER BY object_type;
-```
-
-Expected output:
-| OBJECT_TYPE | COUNT |
-|-------------|-------|
-| FUNCTION | 14 |
-| INDEX | 30+ |
-| PROCEDURE | 50+ |
-| SEQUENCE | 11 |
-| TABLE | 13 |
-| TRIGGER | 6 |
-
----
-
-## 💻 Usage
-
-### Development Mode
-
-Start both the frontend and backend concurrently:
-
-```bash
-cd project
-npm run dev:all
-```
-
-Or start them separately:
-
-```bash
-# Terminal 1: Start API server
-npm run server
-
-# Terminal 2: Start frontend
-npm run dev
-```
-
-### Access the Application
-
-| Service | URL |
-|---------|-----|
-| **Frontend** | http://localhost:5173 |
-| **API Server** | http://localhost:3000 |
-
-### Default Credentials
-
-| User | Password | Role |
-|------|----------|------|
+| Username | Password | Role |
+|----------|----------|------|
 | `bus_admin` | Admin2025 | Administrator |
 | `bus_manager1` | Manager2025 | Manager |
 | `chauffeur1` | Chauffeur2025 | Driver |
-| `bus_commercial` | Commercial2025 | Commercial |
-| `bus_analyste` | Analyste2025 | Analyst |
 
 ---
 
-## 🔐 Security Features
+## 🛠️ Tech Stack
 
-### Role-Based Access Control (RBAC)
-
-| Role | Permissions |
-|------|-------------|
-| **Admin** | Full access to all tables and operations |
-| **Manager** | Manage trips, drivers, schedules, incidents |
-| **Driver** | View schedules, update trip status, report incidents |
-| **Maintenance** | Manage buses and maintenance records |
-| **Commercial** | Manage tickets and subscriptions |
-| **Analyst** | Read-only access to all data |
-
-### Database Security
-
-- 🔒 Encrypted passwords
-- 🔒 Session auditing enabled
-- 🔒 Quota limits per user
-- 🔒 Trigger-based validation
+**Frontend:** React 19, TypeScript, Vite, Tailwind CSS, Recharts  
+**Backend:** Express 5, Oracle Database 19c, TypeScript  
+**Database:** 13 Tables, 50+ Procedures, 14 Functions, 6 Triggers
 
 ---
 
+## 📊 Database Architecture
 
-## 🧪 API Endpoints
+### Core Tables
+- **AUTOBUS**: Fleet management (registration, model, capacity, status)
+- **CHAUFFEURS**: Driver information (name, phone, license details)
+- **LIGNES**: Bus lines and routes configuration
+- **STATIONS**: Bus stops with GPS coordinates
+- **TRAJETS**: Trip records linking buses, drivers, and schedules
+- **BILLETS**: Ticket management with dynamic pricing
+- **HORAIRES**: Schedule management (departure/arrival times)
+- **ITINERAIRES**: Route details and stop sequences
+- **ABONNEMENTS**: Subscription and pass management
+- **INCIDENTS**: Incident tracking and reporting
+- **ENTRETIENS**: Maintenance records and history
+- **UTILISATEURS**: User accounts with role-based access
+- **TARIFS**: Pricing configuration and fare rules
 
-### Core Resources
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/buses` | List all buses |
-| POST | `/api/buses` | Create a new bus |
-| PUT | `/api/buses/:id` | Update a bus |
-| DELETE | `/api/buses/:id` | Delete a bus |
-| GET | `/api/drivers` | List all drivers |
-| GET | `/api/trips` | List all trips |
-| GET | `/api/tickets` | List all tickets |
-| GET | `/api/lines` | List all bus lines |
-| GET | `/api/stations` | List all stations |
-| GET | `/api/schedules` | List all schedules |
+### Database Objects
+- **50+ Procedures**: 
+  - `manage_bus()`, `manage_driver()`, `manage_trip()`
+  - `calculate_fare()`, `generate_ticket()`
+  - `get_all_buses()`, `get_bus_details()`
+- **14 Functions**: 
+  - `calculate_distance()`, `check_bus_availability()`
+  - `calculate_ticket_price()`, `check_license_expiry()`
+- **6 Triggers**: 
+  - Auto-increment IDs, validation checks
+  - Audit logging, status updates
+- **RBAC**: 6 roles with granular permissions
+  - `BUS_ADMIN_ROLE`, `BUS_MANAGER_ROLE`, `BUS_DRIVER_ROLE`
+  - `BUS_MAINTENANCE_ROLE`, `BUS_COMMERCIAL_ROLE`, `BUS_ANALYSTE_ROLE`
 
 ---
 
-## 🤝 Contributing
+## 🔌 API Endpoints
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```
+GET/POST/PUT/DELETE  /api/buses
+GET/POST/PUT         /api/drivers
+GET/POST/PUT/DELETE  /api/trips
+GET/POST             /api/tickets
+GET                  /api/lines
+GET                  /api/stations
+GET                  /api/analytics/dashboard
+```
 
 ---
 
 ## 👥 Authors
 
-<table>
-<tr>
-<td align="center">
-<strong>Mustapha Idabella</strong><br>
-<a href="#">@mustaphaidabella</a>
-</td>
-<td align="center">
-<strong>Abdessamad Lahlaoui</strong><br>
-<a href="#">@abdessamadlahlaoui</a>
-</td>
-<td align="center">
-<strong>Othman Gadrouz</strong><br>
-<a href="#">@othmangadrouz</a>
-</td>
-</tr>
-</table>
+**Mustapha Idabella** • **Abdessamad Lahlaoui** • **Othman Gadrouz**
 
+---
 
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file
 
 ---
 
 <div align="center">
 
+**Made with ❤️ in Morocco 🇲🇦**
 
+[Report Bug](https://github.com/your-username/Systeme_de_Gestion_Transport_Public/issues) • [Request Feature](https://github.com/your-username/Systeme_de_Gestion_Transport_Public/issues)
 
 </div>
-
