@@ -1,0 +1,27 @@
+{
+    "name": "city-bus-tracker-backend",
+    "version": "1.0.0",
+    "description": "Backend API server for City Bus Tracker",
+    "type": "module",
+    "main": "src/server.ts",
+    "scripts": {
+        "dev": "tsx src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.3",
+        "express": "^5.1.0",
+        "oracledb": "^6.10.0"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.5",
+        "@types/node": "^24.10.1",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.7.0",
+        "typescript": "^5.5.3"
+    }
+}

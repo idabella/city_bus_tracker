@@ -1,0 +1,31 @@
+# Backend Requirements for City Bus Tracker
+
+## Oracle Instant Client
+# Required for oracledb npm package to work
+# Download from: https://www.oracle.com/database/technologies/instant-client/downloads.html
+# Version: 19.x or higher recommended
+
+## System Dependencies
+# - Oracle Instant Client Basic Package
+# - Oracle Instant Client SDK (for development)
+# - libaio1 (Linux only)
+
+## Environment Variables Required
+# - ORACLE_HOME (path to Oracle Instant Client)
+# - LD_LIBRARY_PATH (Linux/Mac - should include $ORACLE_HOME)
+# - PATH (Windows - should include Oracle Instant Client directory)
+
+## Node.js Dependencies
+# See package.json for npm dependencies
+# Main dependencies:
+# - oracledb@^6.10.0
+# - express@^5.1.0
+# - cors@^2.8.5
+# - dotenv@^17.2.3
+
+## Installation Steps
+# 1. Install Oracle Instant Client for your OS
+# 2. Set environment variables
+# 3. Run: npm install
+# 4. Configure .env file with Oracle credentials
+# 5. Run: npm run dev

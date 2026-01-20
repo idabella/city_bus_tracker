@@ -1,7 +1,7 @@
 // server.ts
 import express from 'express';
 import cors from 'cors';
-import { oracle } from './src/utils/oracle.js';
+import { oracle } from './utils/oracle.js';
 
 const app = express();
 const PORT = 3001;
