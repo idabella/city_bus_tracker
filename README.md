@@ -18,7 +18,7 @@
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 Modern web application for managing public bus transportation operations including fleet management, driver scheduling, route planning, ticketing system, and real-time analytics. Built with React, TypeScript, Express, and Oracle Database.
 
@@ -281,7 +281,7 @@ city_bus_tracker/
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - **[Backend Documentation](backend/README.md)** - API endpoints, setup, and configuration
 - **[Frontend Documentation](frontend/README.md)** - Component structure, styling, and features
@@ -290,17 +290,6 @@ city_bus_tracker/
 
 ---
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
-
-- Development workflow
-- Code standards
-- Pull request process
-- Reporting bugs
-- Feature requests
-
----
 
 ## 👥 Authors
 
@@ -314,10 +303,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
 
-**Made with ❤️ in Morocco 🇲🇦**
-
-[Report Bug](https://github.com/idabella/city_bus_tracker/issues) • [Request Feature](https://github.com/idabella/city_bus_tracker/issues)
-
-</div>
